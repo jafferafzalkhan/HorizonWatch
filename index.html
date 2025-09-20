@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://kit.fontawesome.com/7494818840.js" crossorigin="anonymous"></script>
+  <title>HorizonWatch</title>
+</head>
+
+<body class="dark-mode">
+  <header class="h-16 sm:h-20 w-full bg-black">
+    <div id="header-container" class="flex justify-between items-center h-full px-3 sm:px-6">
+
+      <!-- Logo (Left) -->
+      <div id="logo">
+        <h2 class="text-white text-lg sm:text-xl md:text-2xl font-bold cursor-pointer" id="logo-hh">HorizonWatch</h2>
+      </div>
+
+      <!-- Right Section -->
+      <div class="flex items-center gap-3">
+
+        <!-- Search Input -->
+        <div id="search-input" class="flex items-center">
+          <input type="text" name="search-weather" id="search-weather" placeholder="Search city..." class="w-28 sm:w-44 md:w-60 lg:w-72 
+                 px-2 sm:px-3 py-1 sm:py-1.5 h-7 sm:h-9 
+                 border-2 border-gray-300 rounded-lg 
+                 bg-black text-white placeholder-gray-500 
+                 focus:outline-none focus:ring-2 focus:ring-blue-400 
+                 focus:border-blue-400 transition">
+        </div>
+
+        <!-- Hide on tablet/mobile -->
+        <div class="hidden lg:flex items-center gap-3">
+          <!-- Location -->
+          <div id="location"
+            class="text-white text-base border-2 border-white rounded-lg px-2 py-1 flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-location-dot text-white text-sm"></i>
+          </div>
+
+          <!-- Temp + Wind Group -->
+          <div class="flex items-center gap-1">
+            <!-- Temperature -->
+            <div id="current-celsius"
+              class="border-2 border-white text-white px-2 py-1 rounded-lg  h-9 w-14 flex items-center justify-center">
+              <p class="text-sm font-semibold current-temp" id="tempera">
+                0° C
+              </p>
+            </div>
+
+            <!-- Wind Speed -->
+            <div id="wind-speed"
+              class="border-2 border-white text-white px-2 py-1 rounded-lg w-20 flex items-center justify-center">
+              <p class="text-sm font-semibold">
+                0 <i class="fa-solid fa-wind text-sm"></i>
+              </p>
+            </div>
+          </div>
+
+          <!-- GitHub -->
+          <div id="git-hub"
+            class="border-2 border-white text-white px-2 py-1 rounded-lg w-9 h-9 flex items-center justify-center cursor-pointer">
+            <i class="fa-brands fa-github text-sm"></i>
+          </div>
+        </div>
+
+        <!-- Sun + Moon (Always visible, smaller icons) -->
+        <div class="flex items-center gap-1">
+          <div id="dark-light-sun"
+            class="border-2 border-white text-white px-1.5 py-1.5 rounded-lg w-9 flex items-center justify-center cursor-pointer">
+            <i class="fa-solid fa-sun text-base sm:text-lg"></i>
+          </div>
+          <div id="dark-light-moon"
+            class="border-2 border-white text-white px-1.5 py-1.5 rounded-lg w-9 flex items-center justify-center cursor-pointer">
+            <i class="fa-solid fa-moon text-base sm:text-lg"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+
+  <main class="bg-black min-h-screen text-white w-full">
+    <!-- Current Weather -->
+    <div class="flex justify-center items-center py-10 px-4 sm:px-10">
+      <div id="current-weather" class="bg-neutral-800 rounded-xl p-6 mb-6 w-full max-w-4xl">
+        <div>
+          <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div class="text-center sm:text-left">
+              <h2 id="search-location" class="text-2xl font-semibold">Mumbai, IN</h2>
+              <p id="condition" class="text-gray-400">Few Clouds • Gentle Breeze</p>
+              <h3 id="temperature" class="text-5xl font-bold mt-2 current-temp">9°C</h3>
+              <p id="feels-like" class="text-gray-400">Feels like 8°C</p>
+            </div>
+            <div class="text-center">
+              <time datetime="2025-09-10" id="date-element"
+                class="border-2 border-gray-300 rounded-lg px-4 py-2 block"></time>
+              <div id="weather-icon" class="text-6xl mt-6"></div>
+            </div>
+          </div>
+          <div id="weather-forecast">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center mt-6">
+              <div class="border-2 border-gray-300 rounded-lg p-2">
+                <p class="text-sm text-gray-400">Wind Speed</p>
+                <p id="wind-speeds" class="font-semibold">3.32 m/s</p>
+              </div>
+              <div class="border-2 border-gray-300 rounded-lg p-2">
+                <p class="text-sm text-gray-400">Humidity</p>
+                <p id="humidity" class="font-semibold">63%</p>
+              </div>
+              <div class="border-2 border-gray-300 rounded-lg p-2">
+                <p class="text-sm text-gray-400">Pressure</p>
+                <p id="pressure" class="font-semibold">998 hPa</p>
+              </div>
+              <div class="border-2 border-gray-300 rounded-lg p-2">
+                <p class="text-sm text-gray-400">Visibility</p>
+                <p id="visibility" class="font-semibold">10.0 km</p>
+              </div>
+              <div class="border-2 border-gray-300 rounded-lg p-2">
+                <p class="text-sm text-gray-400">Sunrise</p>
+                <p id="sunrise" class="font-semibold">05:48</p>
+              </div>
+              <div class="border-2 border-gray-300 rounded-lg p-2">
+                <p class="text-sm text-gray-400">Sunset</p>
+                <p id="sunset" class="font-semibold">19:19</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forecast -->
+    <div id="forecast-section" class="flex flex-col items-center w-full px-4 sm:px-10">
+      <h3 class="text-2xl font-semibold mb-4 text-center">TODAY'S FORECAST</h3>
+      <div class="flex justify-center items-center w-full">
+        <div id="forecast-cards"
+          class="flex flex-wrap justify-center gap-4 bg-neutral-800 rounded-lg p-4 w-full max-w-5xl">
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-time">11:00</p>
+            <p class="text-xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Scattered Clouds</p>
+            <p class="font-bold forecast-temp">9°C</p>
+          </div>
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-time">14:00</p>
+            <p class="text-xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Scattered Clouds</p>
+            <p class="font-bold forecast-temp">12°C</p>
+          </div>
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-time">17:00</p>
+            <p class="text-xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Light Rain</p>
+            <p class="font-bold forecast-temp">11°C</p>
+          </div>
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-time">20:00</p>
+            <p class="text-xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Moderate Rain</p>
+            <p class="font-bold forecast-temp">8°C</p>
+          </div>
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-time">23:00</p>
+            <p class="text-xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Moderate Rain</p>
+            <p class="font-bold forecast-temp">5°C</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- 5-Day Forecast -->
+    <div id="five-day-forecast" class="flex flex-col items-center w-full px-4 sm:px-10 mt-10 justify-between mb">
+      <h3 class="text-2xl font-semibold mb-4 text-center">5-DAY FORECAST</h3>
+      <div class="flex justify-center items-center w-full">
+        <div id="forecast-5day-cards"
+          class="flex flex-wrap justify-center gap-4 bg-neutral-800 rounded-lg p-4 w-full max-w-5xl">
+          
+          <!-- Day 1 -->
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-date">Fri</p>
+            <p class="text-2xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Sunny</p>
+            <p class="font-bold forecast-temp">30°C</p>
+          </div>
+
+          <!-- Day 2 -->
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-date">Sat</p>
+            <p class="text-2xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Cloudy</p>
+            <p class="font-bold forecast-temp">28°C</p>
+          </div>
+
+          <!-- Day 3 -->
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-date">Sun</p>
+            <p class="text-2xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Rain</p>
+            <p class="font-bold forecast-temp">26°C</p>
+          </div>
+
+          <!-- Day 4 -->
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-date">Mon</p>
+            <p class="text-2xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Partly Cloudy</p>
+            <p class="font-bold forecast-temp">27°C</p>
+          </div>
+
+          <!-- Day 5 -->
+          <div class="bg-neutral-800 border-2 border-gray-300 rounded-xl p-4 w-32 sm:w-40 text-center">
+            <p class="text-sm text-gray-400 forecast-date">Tue</p>
+            <p class="text-2xl forecast-icon"></p>
+            <p class="text-sm forecast-condition">Snow</p>
+            <p class="font-bold forecast-temp">3°C</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
