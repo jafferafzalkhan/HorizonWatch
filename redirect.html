@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error - City Not Found</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+    }
+    h1 { font-size: 2rem; }
+    p { margin: 15px 0; font-size: 1.2rem; }
+    a { color: yellow; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Error</h1>
+  <p id="error-msg"></p>
+  <a href="index.html">Go Back</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("msg") || "City or Country not found!";
+    document.getElementById("error-msg").textContent = msg;
+  </script>
+</body>
+</html>
